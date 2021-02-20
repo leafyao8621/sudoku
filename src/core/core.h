@@ -5,6 +5,7 @@ extern char grid[81];
 
 void core_initialize(void);
 void core_generate_grid(void);
+int core_solve_grid(void);
 void core_print_grid(void);
 
 #endif

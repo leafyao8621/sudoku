@@ -17,9 +17,9 @@ static int check(char *grid, char *cur) {
             return 1;
         }
     }
-    for (char *i = square; i < cur;) {
-        for (char j = 0; j < 3 && i < cur; ++j, ++i) {
-            if (*i == val) {
+    for (char i = 0, *ii = square; i < 3; ++i) {
+        for (char j = 0; j < 3; ++j, ++ii) {
+            if ((ii != cur) && (*ii == val)) {
                 return 1;
             }
         }

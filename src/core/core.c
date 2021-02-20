@@ -15,11 +15,11 @@ static void swap(char *a, char *b) {
 }
 
 void core_initialize(void) {
-    mt19937_initialize(&gen, 200);
+    mt19937_initialize(&gen, time(0));
+    memset(grid, 0, 81);
 }
 
 void core_generate_grid(void) {
-    memset(grid, 0, 81);
     char buf[9];
     for (char i = 0, *ii = buf; i < 9; *(ii++) = ++i);
     for (char cnt = 0, *iter = grid; cnt < 3; ++cnt, iter += 3) {
@@ -35,6 +35,10 @@ void core_generate_grid(void) {
         for (; !*cur; cur = grid + mt19937_gen(&gen) % 81);
         *cur = 0;
     }
+}
+
+int core_solve_grid(void) {
+    return solver_solve(grid);
 }
 
 void core_print_grid(void) {
