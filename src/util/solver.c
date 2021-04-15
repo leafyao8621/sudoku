@@ -28,7 +28,7 @@ static int check(char *grid, char *cur) {
 }
 
 int solver_check(char *grid, char row, char col) {
-    return check(grid, grid + row * 9 + col);
+    return grid[row * 9 + col] && check(grid, grid + row * 9 + col);
 }
 
 int solver_solve(char *grid) {
