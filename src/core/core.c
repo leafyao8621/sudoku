@@ -16,10 +16,10 @@ static void swap(char *a, char *b) {
 
 void core_initialize(void) {
     mt19937_initialize(&gen, time(0));
-    memset(grid, 0, 81);
 }
 
 void core_generate_grid(void) {
+    memset(grid, 0, 81);
     char buf[9];
     for (char i = 0, *ii = buf; i < 9; *(ii++) = ++i);
     for (char cnt = 0, *iter = grid; cnt < 3; ++cnt, iter += 3) {
@@ -49,4 +49,12 @@ void core_print_grid(void) {
         }
         putchar(10);
     }
+}
+
+void core_modify_grid(char row, char col, char data) {
+    grid[row * 9 + col] = data;
+}
+
+int core_check(char row, char col) {
+    return solver_check(grid, row, col);
 }

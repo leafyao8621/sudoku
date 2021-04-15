@@ -12,20 +12,23 @@ static int check(char *grid, char *cur) {
             return 1;
         }
     }
-    for (char i = 0, *ii = grid + col; i < row; ++i, ii += 9) {
+    for (char i = 0, *ii = grid + col; i < 9; ++i, ii += 9) {
         if ((ii != cur) && (*ii == val)) {
             return 1;
         }
     }
-    for (char i = 0, *ii = square; i < 3; ++i) {
+    for (char i = 0, *ii = square; i < 3; ++i, ii += 6) {
         for (char j = 0; j < 3; ++j, ++ii) {
             if ((ii != cur) && (*ii == val)) {
                 return 1;
             }
         }
-        i += 6;
     }
     return 0;
+}
+
+int solver_check(char *grid, char row, char col) {
+    return check(grid, grid + row * 9 + col);
 }
 
 int solver_solve(char *grid) {
